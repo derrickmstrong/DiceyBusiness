@@ -3,7 +3,6 @@ const rollBtn = document.querySelector('#roll-btn');
 const sumBtn = document.querySelector('#sum-btn');
 const container = document.querySelector('.container');
 const board = document.querySelector('#board');
-
 let value = Math.floor(Math.random() * 6 + 1);
 let counter = 1;
 
@@ -12,8 +11,10 @@ class Die {
     this.div = document.createElement('div');
     this.value = document.createTextNode(value);
     this.div.className = 'dice';
-    this.div.id = counter;
+    this.div.id = 'dice' + counter;
+    counter++;
     board.appendChild(this.div);
+
     this.roll();
     this.rollAll();
   }
@@ -52,5 +53,13 @@ class Die {
 generateBtn.addEventListener('click', function () {
   new Die(value);
   value = Math.floor(Math.random() * 6 + 1);
-  counter++;
+
+  /* Implement later in Dice Game
+    new Die(value);
+    const dice1 = document.querySelector('#dice1');
+    const dice2 = document.querySelector('#dice2');
+    console.log(dice1.innerHTML);
+    console.log(dice2.innerHTML);
+    console.log(Number(dice1.innerHTML) + Number(dice2.innerHTML));
+*/
 });
