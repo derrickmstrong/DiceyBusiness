@@ -8,20 +8,25 @@ let counter = 1;
 
 class Die {
   constructor(value) {
-    this.div = document.createElement('div');
-    this.value = document.createTextNode(value);
-    this.div.className = 'dice';
-    this.div.id = 'dice' + counter;
-    counter++;
-    board.appendChild(this.div);
-
-    this.roll();
+    this.makeDie();
+    this.rollDie();
     this.rollAll();
   }
 
-  roll() {
+  makeDie() {
+    this.div = document.createElement('div');
+    this.value = document.createTextNode(value);
+    this.div.className = 'die';
+    this.div.id = 'die' + counter;
+    board.appendChild(this.div);
+    counter++;
+  }
+
+  rollDie() {
     let randomNum = Math.floor(Math.random() * 6 + 1);
-    switch (randomNum) {
+    value = randomNum;
+
+    switch (value) {
       case 1:
         this.div.innerText = '🎲';
         break;
@@ -41,19 +46,17 @@ class Die {
         this.div.innerText = `6`;
         break;
       default:
-        alert('No Dice');
+        alert('No Die');
     }
   }
 
   rollAll() {
-    rollBtn.addEventListener('click', () => this.roll());
+    rollBtn.addEventListener('click', () => this.rollDie());
   }
 }
 
-generateBtn.addEventListener('click', function () {
+generateBtn.addEventListener('click', () => {
   new Die(value);
-  value = Math.floor(Math.random() * 6 + 1);
-
   /* Implement later in Dice Game
     new Die(value);
     const dice1 = document.querySelector('#dice1');
