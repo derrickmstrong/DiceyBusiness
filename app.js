@@ -2,7 +2,6 @@ const generateBtn = document.querySelector('#generate-btn');
 const rollBtn = document.querySelector('#roll-btn');
 const sumBtn = document.querySelector('#sum-btn');
 const container = document.querySelector('.container');
-const board = document.querySelector('#board');
 let value = Math.floor(Math.random() * 6 + 1);
 let counter = 1;
 
@@ -18,11 +17,12 @@ class Die {
     this.value = document.createTextNode(value);
     this.div.className = 'dice';
     this.div.id = 'dice' + counter;
-    board.appendChild(this.div);
+    container.appendChild(this.div);
     counter++;
   }
-
+  
   rollDie() {
+    this.div.addEventListener('click', () => this.rollDie())
     let randomNum = Math.floor(Math.random() * 6 + 1);
     value = randomNum;
 
@@ -40,7 +40,7 @@ class Die {
         this.div.innerText = `4`;
         break;
       case 5:
-        this.div.innerText = `5`;
+        this.div.innerText = `\u2684`;
         break;
       case 6:
         this.div.innerText = `6`;
