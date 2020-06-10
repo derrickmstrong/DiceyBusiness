@@ -16,8 +16,8 @@ class Die {
   makeDie() {
     this.div = document.createElement('div');
     this.value = document.createTextNode(value);
-    this.div.className = 'die';
-    this.div.id = 'die' + counter;
+    this.div.className = 'dice';
+    this.div.id = 'dice' + counter;
     board.appendChild(this.div);
     counter++;
   }
